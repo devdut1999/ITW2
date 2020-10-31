@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if error %}
+{{ error }}
+<br />
+<br />
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+</head>
+<body style="background-color: rgb(252, 249, 194);">
+		<div class=" text-center">
+			<h1>Welcome Back! Hunters!</h1>
+			<br>
+			<br>
+			<form method="Post" action="{% url 'login' %}" >
+			{% csrf_token %}
+				<label for="user"><h4>Username :</h4></label><br>
+				<input type="text" name="username"  >
+				<br><br>
+				<label for="pass1"><h4>Password :</h4></label><br>
+				<input type="password" name="password" >
+				<br>
+				<br>
+				<label for="btn"></label>
+				<input class="btn btn-primary" type="submit" value ="Login" id="btn">
+			</form>
+		</div>
+
+</body>
+</html>
+
+{% endblock %}
