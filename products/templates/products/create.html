@@ -17,11 +17,10 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="{% static 'open-iconic/font/css/open-iconic-bootstrap.css' %}" rel="stylesheet">
-  </head>
 
 
 
-  	<style>
+ <style>
 
 		.wave{
 			position: fixed;
@@ -154,7 +153,7 @@
 			background: none;
 			padding: 0.5rem 0.7rem;
 			font-size: 1.2rem;
-			color: #555;
+			color: white;
 			font-family: 'poppins', sans-serif;
 		}
 
@@ -221,13 +220,13 @@
 			.login-content{
 				justify-content: center;
 			}
-		}
+		}	
 	</style>
- 
+   </head>
   <body >
 
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark" heigth = "20px" style="padding-left: 7rem;">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" heigth = "20px" style="padding-left: 7rem;">
 	        <a class="navbar-brand" href="{% url 'home' %}">
 	        	<h4><img src="{% static 'logo.png' %}" class = "d-inline-block allign-top" height="30" width="30">
             Product Hunt</h4>
@@ -238,15 +237,15 @@
 	        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 	          <div class="navbar-nav ml-auto">
               {% if user.is_authenticated %}
-              <a class="nav-item nav-link" href="{% url 'create' %}"><h5 style="color: white">Create</h5></a>
-              <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}" onclick=""><h5 style="color: white;padding-right: 5rem;">Logout</h5></a>
+              <a class="nav-item nav-link" href="{% url 'create' %}"><h5 style="color: black">Create</h5></a>
+              <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}" onclick=""><h5 style="color: black;padding-right: 5rem;">Logout</h5></a>
               <form id="logout" method="POST" action="{% url 'logout' %}">
                 {% csrf_token %}
                 <input type="hidden" />
               </form>
               {% else %}
-	            <a class="nav-link "  href="{% url 'signup' %}"><h5 style="color: white">Sign Up</h5></a>
-	            <a class="nav-link" href="{% url 'login' %}"><h5 style="color: white;padding-right: 5rem;">Login</h5></a>
+	            <a class="nav-link "  href="{% url 'signup' %}"><h5 style="color: black">Sign Up</h5></a>
+	            <a class="nav-link" href="{% url 'login' %}"><h5 style="color: black;padding-right: 5rem;">Login</h5></a>
               {% endif %}
 	          </div>
 	        </div>
@@ -261,10 +260,10 @@
 		<br />
 		{% endif %}
 
-		<img class="wave" src="{% static 'cool.jpg' %}">
+		<img class="wave" src="{% static 'dark_blue.jpg' %}">
 		<div class="container">
 			<div class="img">
-				<img src="{% static 'bg.svg' %}">
+				<img src="{% static 'market-launch-pana.svg' %}">
 			</div>
 			<div class="login-content text-center" >
 				<form class="inside" method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
@@ -273,7 +272,7 @@
 					<h4 class="title" style="color: white;">Register your Product</h4>
 	           		<div class="input-div one">
 	           		   <div class="i">
-	           		   		<i class=""></i>
+	           		   		<i class="fa fa-cogs" ></i>
 	           		   </div>
 	           		   <div class="div">
 	           		   		<h5>Title</h5>
@@ -282,20 +281,20 @@
 	           		</div>
 	           		<div class="input-div one">
 	           		   <div class="i">
-	           		   		<i class=""></i>
+	           		   		<i class="fa fa-info-circle" ></i>
 	           		   </div>
 	           		   <div class="div">
 	           		   		<h5>Body</h5>
-	           		   		<input type="textbox" class="input" name="body">
+	           		   		<input type="text" class="input" name="body">
 	           		   </div>
 	           		</div>
 	           		<div class="input-div one">
 	           		   <div class="i">
-	           		   		<i class=""></i>
+	           		   		<i class="fa fa-at"></i>
 	           		   </div>
 	           		   <div class="div">
-	           		   		<h5>Url</h5>
-	           		   		<input type="text" class="input" name="text">
+	           		   		<h5>URL</h5>
+	           		   		<input type="url" class="input" name="url">
 	           		   </div>
 	           		</div>
 	           		<br>
