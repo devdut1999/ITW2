@@ -17,6 +17,23 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="{% static 'open-iconic/font/css/open-iconic-bootstrap.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script> 
+        function show_hide_password() {
+            var x = document.getElementById("password");
+            var y = document.getElementById("show-pass");
+            if (x.type === "password") {
+                x.type = "text";
+                y.innerHTML = "Hide";
+            } else {
+                x.type = "password";
+                y.innerHTML = "Show";
+            }
+        }
+    </script>
   
 
   	<style>
@@ -31,7 +48,7 @@
 
 body{
     font-family: 'Poppins', sans-serif;
-    /*overflow: hidden;*/
+    
 }
 
 .wave{
@@ -279,7 +296,7 @@ a:hover{
       </nav>
     </header>
 
-    <div>
+   <!--  <div>
 		{% if error %}
 		{{ error }}
 		<br />
@@ -321,8 +338,56 @@ a:hover{
 	        </div>
 
 	    </div>
-    </div>  
-	    
+    </div>   -->
+	    	
+
+	  <div style="background-color: rgb(2,27,44) !important" class="jumbotron text-center" id="createAccountHeader">
+            <h1> Login</h1>
+        </div>
+        <div id="body-data">
+            <p></p>
+                    <div class='login-page-data'>
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Username" name="username" placeholder="Username">
+                              </div>
+                              
+                              <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Password" id="password" name="password" placeholder="Password">
+                                <div class="input-group-append">
+                                  <span class="input-group-text cursor-pointer" type="button" onclick="show_hide_password()" id='show-pass'>Show</span>
+                                </div>
+                              </div>
+                            <div class="input-group">
+                                <br>
+                                {% for message in messages %}
+                                    <p id="messages" class="error-messages"> {{message}} </p>
+                                {% endfor %}
+                                <input class="btn btn-default" type="submit" value="Login" id="login_button">
+                            </div>
+                        </form>
+                    </div>
+                    <br>
+                    
+                    <div class='login-page-data'>
+                            Don't have an account? 
+                            <a href="{% url 'signup' %}" class="ml-2">Sign Up</a>
+                    </div>
+                    <div class='login-page-data'>
+                            Having trouble logging in?
+                            <a href="{% url 'reset_password' %}" class="ml-2">Forgot Password</a>
+                    </div>
+        </div>
+
+
+
     <br>
     <br>
     <footer class="text-muted" >

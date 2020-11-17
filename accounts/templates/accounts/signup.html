@@ -17,6 +17,10 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="{% static 'open-iconic/font/css/open-iconic-bootstrap.css' %}" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 
    	<style>
 
@@ -28,7 +32,7 @@
 
 		body{
 		    font-family: 'Poppins', sans-serif;
-		    /*overflow: hidden;*/
+		    
 		}
 
 		.wave{
@@ -260,7 +264,7 @@
       </nav>
     </header>
 
-    <div>
+    <!-- <div>
     	
     	{% if error %}
 		{{ error }}
@@ -309,8 +313,74 @@
 	            </form>
 	        </div>
 	    </div>
-    </div>
+    </div> -->
         
+    <div style="background-color: rgb(2, 27, 44) !important" class="jumbotron text-center" id="createAccountHeader">
+            <h1>Signup for Startup_Boom</h1>
+            <!-- <p>subhead</p> --> 
+    </div>
+
+
+    <div class="container-fluid">
+            <div class="row">
+                <!-- <div class="col-md-6" >
+                    <img src="../../user_data/ridham-logo2.png" width=100% class="center">
+                </div> -->
+                <div class="col-md-6">
+                    {% for message in messages %}
+                        <p class="warning-message">{{message}}</p>
+                    {% endfor %}
+        <!--<div class="form-input">-->
+            <form enctype="multipart/form-data" method="POST" autocomplete="on" action="">
+                {% csrf_token %}
+                <p>
+                    <label for="id_username">Username:</label> 
+                    <input type="text" name="username" maxlength="150" autofocus required id="id_username"> 
+                    <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
+                </p>
+                <p>
+                    <label for="id_first_name">First name:</label> 
+                    <input type="text" name="first_name" maxlength="150" id="id_first_name">
+                </p>
+                <p>
+                    <label for="id_last_name">Last name:</label> 
+                    <input type="text" name="last_name" maxlength="150" id="id_last_name">
+                </p>
+                <p>
+                    <label for="id_email">Email address:</label> 
+                    <input type="email" name="email" maxlength="254" id="id_email">
+                </p>
+                <p>
+                    <label for="id_password1">Password:</label> 
+                    <input type="password" name="password1" autocomplete="new-password" required id="id_password1"> 
+                    <!-- <label><input type="checkbox" onclick="show_hide_password('id_password1')">Show Password</label> -->
+                    <span class="helptext">
+                        <ul>
+                            <li>Your password can’t be too similar to your other personal information.</li>
+                            <li>Your password must contain at least 8 characters.</li>
+                            <li>Your password can’t be a commonly used password.</li>
+                            <li>Your password can’t be entirely numeric.</li>
+                        </ul>
+                    </span>
+                </p>
+                <p>
+                    <label for="id_password2">Password confirmation:</label> 
+                    <input type="password" name="password2" autocomplete="new-password" required id="id_password2">
+                    <label style="float:right;"><input type="checkbox" onclick="show_hide_password()">Show Password</label>
+                    <br>
+                    <span class="helptext">Enter the same password as before, for verification.</span>
+                </p>
+                <input class ="btn btn-success" type="submit" name="Create User">
+            </form>
+        <!--</div>-->
+            </div>
+            </div>
+        </div>
+        <br>
+        <div class="col-md-6"></div>
+        <div class="col-md-6"><p><a style="color: blue"href="{% url 'login' %}">Already have an account ?</a><p>
+        <a style="color: blue"href="{% url 'reset_password' %}">Forgot Password</a></div>
+
     <br>
     <br>
     <footer class="text-muted" >
