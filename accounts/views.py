@@ -64,10 +64,10 @@ def register(request):
                 # user.groups.add(gp)
                 uname = user.username
                 messages.success(request, "Please check you mail for account verification, " + uname +   " ! After that, you can successfully log-in !")
-                return redirect('accounts:login')
+                return redirect('login')
             except:
                 messages.info(request, "There is already an account with this email id! ")
-                return redirect('accounts:signup')
+                return redirect('signup')
         else:
             messages.info(request, "Please follow the guidelines for registering properly. ")
             form = CreateUserForm()
@@ -92,7 +92,7 @@ def loginPage(request):
     context = {}
     return render(request, 'accounts/login.html', context)
 
-@login_required(login_url='accounts:login')
+@login_required(login_url='login')
 def home(request):
     context = {}
     return render(request, 'products/home.html', context)

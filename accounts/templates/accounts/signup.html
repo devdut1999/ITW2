@@ -21,6 +21,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+     <script> 
+            function show_hide_password() {
+                var x = document.getElementById('id_password1');
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+                var y = document.getElementById('id_password2');
+                if (y.type === "password") {
+                    y.type = "text";
+                } else {
+                    y.type = "password";
+                }
+            }
+        </script>
 
    	<style>
 
@@ -331,7 +347,7 @@
                         <p class="warning-message">{{message}}</p>
                     {% endfor %}
         <!--<div class="form-input">-->
-            <form enctype="multipart/form-data" method="POST" autocomplete="on" action="">
+            <form enctype="multipart/form-data" method="POST" autocomplete="on" action="{% url 'signup' %}">
                 {% csrf_token %}
                 <p>
                     <label for="id_username">Username:</label> 
