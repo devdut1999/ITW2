@@ -85,11 +85,7 @@ body {
     font-size: large;
 }
 
-#login_button {
-    background-color: steelblue;
-    border: none;
-    color:white;
-}
+
 .login-page-data {
     margin: auto;
 }
@@ -108,8 +104,9 @@ input{
     border: 2px solid rgb(71, 71, 182);
     border-radius: 4px;
     background-color: #a0d2f3;
-    color: white;
-}
+    color: black;
+    font-weight: bold;
+  }
 
 input:focus {
     border: 2px solid red;
@@ -284,24 +281,24 @@ a:hover{
 }*/
 
 .btn{
-	display: block;
-	width: 100%;
-	height: 50px;
-	border-radius: 25px;
-	outline: none;
-	border: none;
-	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
-	background-size: 200%;
-	font-size: 1.2rem;
-	color: #fff;
-	font-family: 'Poppins', sans-serif;
-	text-transform: uppercase;
-	margin: 1rem 0;
-	cursor: pointer;
-	transition: .5s;
+  display: block;
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+  background-size: 200%;
+  font-size: 1.2rem;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: .5s;
 }
 .btn:hover{
-	background-position: right;
+  background-position: right;
 }
 
 /*
@@ -429,7 +426,7 @@ a:hover{
             <p></p>
                     <div class='login-page-data'>
                         <form method="POST" action="{% url 'login' %}">
-                            {% csrf_token %}
+                        {% csrf_token %}
                               <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text"><i class="fas fa-user"></i></span>

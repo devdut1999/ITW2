@@ -441,8 +441,8 @@ input{
                         <p class="warning-message">{{message}}</p>
                     {% endfor %}
         <!--<div class="form-input">-->
-            <form enctype="multipart/form-data" method="POST" autocomplete="on" action="{% url 'signup' %}">
-                {% csrf_token %}
+    		<form enctype="multipart/form-data" method="POST" autocomplete="on" action="{% url 'signup' %}">
+            {% csrf_token %}
                 <p>
                     <label for="id_username">Username:</label> 
                     <input type="text" name="username" maxlength="150" autofocus required id="id_username"> 

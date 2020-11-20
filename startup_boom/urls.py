@@ -14,7 +14,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('products/', include('products.urls')),
    
-    path('mails/', include(mail_urls)),
+    path('emails/', include(mail_urls)),
 
     ##forgot password build 
     # 1. submit email form --> PasswordResetView.as_view()
