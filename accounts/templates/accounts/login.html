@@ -38,9 +38,89 @@
 
   	<style>
 
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+#test {
+    color: #021b2c;
+}
+
+.show-password{
+    text-align : left;
+    font-size: 15px;
+}
+
+.error-messages{
+    text-align: center;
+    color: red;
+}
+
+.form-input {
+    position: relative;
+    border: 5px;
+    border-radius: 5px;
+}
+#form-title {
+    text-align: center;
+}
+#body-data {
+    max-width: 600px;
+    margin: 0px auto;
+    padding: 2rem 3rem;
+    background-color: rgb(48, 81, 100);
+    border-radius: 7px;
+
+}
+#createAccountHeader{
+    border-bottom-style: solid;
+    border-bottom-color: white;
+}
+form {
+    align-content: center;
+}
+body {
+    /*background-color: rgb(167, 252, 217);*/
+    color: white;
+    /* font-family: 'Roboto Mono', monospace; */
+    font-family: 'Poppins', sans-serif;
+    font-size: large;
+}
+
+#login_button {
+    background-color: steelblue;
+    border: none;
+    color:white;
+}
+.login-page-data {
+    margin: auto;
+}
+a {
+    text-decoration: none;
+    color:black;
+}
+a:hover{
+    color: yellow;
+    text-decoration: none;
+}
+input{
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid rgb(71, 71, 182);
+    border-radius: 4px;
+    background-color: #a0d2f3;
+    color: white;
+}
+
+input:focus {
+    border: 2px solid red;
+  }
+
+  .cursor-pointer {
+      cursor: pointer;
+  }
 		
   
-*{
+/**{
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
@@ -49,7 +129,7 @@
 body{
     font-family: 'Poppins', sans-serif;
     
-}
+} */
 
 .wave{
 	position: fixed;
@@ -57,9 +137,10 @@ body{
 	left: 0;
 	height: 100%;
 	z-index: -1;
+	width: 100%;
 }
 
-.container{
+/*.container{
     width: 100vw;
     height: 100vh;
     display: grid;
@@ -200,7 +281,7 @@ a{
 
 a:hover{
 	color: #38d39f;
-}
+}*/
 
 .btn{
 	display: block;
@@ -223,7 +304,7 @@ a:hover{
 	background-position: right;
 }
 
-
+/*
 @media screen and (max-width: 1050px){
 	.container{
 		grid-gap: 5rem;
@@ -261,7 +342,7 @@ a:hover{
 	.login-content{
 		justify-content: center;
 	}
-}
+}*/
 	</style>
 
 
@@ -270,9 +351,9 @@ a:hover{
   <body>
 
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark" heigth = "20px" style="padding-left: 7rem;">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" heigth = "20px" style="padding-left: 7rem;">
 	        <a class="navbar-brand" href="{% url 'home' %}">
-	        	<h4><img src="{% static 'logo.png' %}" class = "d-inline-block allign-top" height="30" width="30">
+	        	<h4 style="font-weight: bold;"><img src="{% static 'logo.png' %}" class = "d-inline-block allign-top" height="30" width="30">
             Product Hunt</h4>
 	        </a>
 	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -281,15 +362,15 @@ a:hover{
 	        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 	          <div class="navbar-nav ml-auto">
               {% if user.is_authenticated %}
-              <a class="nav-item nav-link" href="{% url 'create' %}"><h5 style="color: white">Create</h5></a>
-              <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}" onclick=""><h5 style="color: white;padding-right: 5rem;">Logout</h5></a>
+              <a class="nav-item nav-link" href="{% url 'create' %}"><h5 style="color: black;font-weight: bold;">Create</h5></a>
+              <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}" onclick=""><h5 style="color: black;font-weight: bold;padding-right: 5rem;">Logout</h5></a>
               <form id="logout" method="POST" action="{% url 'logout' %}">
                 {% csrf_token %}
                 <input type="hidden" />
               </form>
               {% else %}
-	            <a class="nav-link "  href="{% url 'signup' %}"><h5 style="color: white">Sign Up</h5></a>
-	            <a class="nav-link" href="{% url 'login' %}"><h5 style="color: white;padding-right: 5rem;">Login</h5></a>
+	            <a class="nav-link "  href="{% url 'signup' %}"><h5 style="color:black;font-weight: bold;">Sign Up</h5></a>
+	            <a class="nav-link" href="{% url 'login' %}"><h5 style="color: black;font-weight: bold;padding-right: 5rem;">Login</h5></a>
               {% endif %}
 	          </div>
 	        </div>
@@ -340,9 +421,9 @@ a:hover{
 	    </div>
     </div>   -->
 	    	
-
+    	<img class="wave" src="{% static 'lbg1.jpg' %}">
 	  <div style="background-color: rgb(2,27,44) !important" class="jumbotron text-center" id="createAccountHeader">
-            <h1> Login</h1>
+            <h1> Welcome!</h1>
         </div>
         <div id="body-data">
             <p></p>
@@ -370,7 +451,7 @@ a:hover{
                                 {% for message in messages %}
                                     <p id="messages" class="error-messages"> {{message}} </p>
                                 {% endfor %}
-                                <input class="btn btn-default" type="submit" value="Login" id="login_button">
+                                <input class="btn " type="submit" value="Login" id="login_button">
                             </div>
                         </form>
                     </div>
@@ -387,7 +468,8 @@ a:hover{
         </div>
 
 
-
+        <br>
+        <br>
     <br>
     <br>
     <footer class="text-muted" >

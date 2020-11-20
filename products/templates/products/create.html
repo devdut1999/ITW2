@@ -228,7 +228,7 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light" heigth = "20px" style="padding-left: 7rem;">
 	        <a class="navbar-brand" href="{% url 'home' %}">
-	        	<h4><img src="{% static 'logo.png' %}" class = "d-inline-block allign-top" height="30" width="30">
+	        	<h4 style="font-weight: bold;"><img src="{% static 'logo.png' %}" class = "d-inline-block allign-top" height="30" width="30">
             Product Hunt</h4>
 	        </a>
 	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -237,15 +237,15 @@
 	        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 	          <div class="navbar-nav ml-auto">
               {% if user.is_authenticated %}
-              <a class="nav-item nav-link" href="{% url 'create' %}"><h5 style="color: black">Create</h5></a>
-              <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}" onclick=""><h5 style="color: black;padding-right: 5rem;">Logout</h5></a>
+              <a class="nav-item nav-link" href="{% url 'create' %}"><h5 style="color: black;font-weight: bold;">Create</h5></a>
+              <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}" onclick=""><h5 style="color: black;font-weight: bold;padding-right: 5rem;">Logout</h5></a>
               <form id="logout" method="POST" action="{% url 'logout' %}">
                 {% csrf_token %}
                 <input type="hidden" />
               </form>
               {% else %}
-	            <a class="nav-link "  href="{% url 'signup' %}"><h5 style="color: black">Sign Up</h5></a>
-	            <a class="nav-link" href="{% url 'login' %}"><h5 style="color: black;padding-right: 5rem;">Login</h5></a>
+	            <a class="nav-link "  href="{% url 'signup' %}"><h5 style="color: black;font-weight: bold;">Sign Up</h5></a>
+	            <a class="nav-link" href="{% url 'login' %}"><h5 style="color: black;font-weight: bold;padding-right: 5rem;">Login</h5></a>
               {% endif %}
 	          </div>
 	        </div>
