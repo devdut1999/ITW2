@@ -14,8 +14,6 @@ class Profile(models.Model):
 
     def __str__(self) -> str:
         return self.user.username
-    def get_song_list(self):
-        return Song.objects.filter(owner = self)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
